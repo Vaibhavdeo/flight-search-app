@@ -2,8 +2,11 @@
 
 This app is developed using spring boot technology.
 
-1 - Package Structure - 
+Steps - Downlod the zip file from Github repository from below link- 
+https://github.com/Vaibhavdeo/flight-search-app
 
+Details of the project.
+1 - Package Structure - 
 com.search.flight.beans
 com.search.flight.config
 com.search.flight.constants
