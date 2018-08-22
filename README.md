@@ -40,8 +40,6 @@ and 3 files provider1.csv, provider2.csv,provider3.csv
 3 -src/main/test
 This folder has some test cases of endpoint package.
 
-4- Please find the screenshot folder attatched with this folder.
-
 
 Scope of Improvement- 
 Due to time limit following things has scope to improve - 
@@ -49,6 +47,7 @@ Due to time limit following things has scope to improve -
 1 - JUnit Test cases - to test multiple scenarios and find the bugs-
 2 - Data can be store in database and fetch it from DB with applying filter on queries.  
 3 - code cleanliness
+4. Exception Handling(Custom Exception)
 
 
 
