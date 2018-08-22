@@ -2,7 +2,7 @@
 
 This app is developed using spring boot technology.
 
-Steps - Downlod the zip file from Github repository from below link- 
+Steps - Downlod the zip file from Github repository from the link- 
 https://github.com/Vaibhavdeo/flight-search-app
 
 Details of the project.
