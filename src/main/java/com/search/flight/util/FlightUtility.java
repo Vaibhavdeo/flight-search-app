@@ -8,6 +8,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
+
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
@@ -16,16 +18,19 @@ import org.springframework.core.io.ClassPathResource;
 import com.search.flight.beans.FlightDetails;
 
 public class FlightUtility {
-
-	public static List<FlightDetails> loadFlightData() throws IOException {
-
-		List<FlightDetails> listFlight = new ArrayList<FlightDetails>();
-		ClassPathResource res = new ClassPathResource("provider.csv");
+	
+	private final static Logger LOGGER = Logger.getLogger(FlightUtility.class.getName());
+	public static List<FlightDetails> listFlight = new ArrayList<>();
+	
+	public static List<FlightDetails> loadFlightDataProvider(String provider, char delimeter) throws IOException {
+		
+		listFlight.clear();
+		ClassPathResource res = new ClassPathResource(provider);
 		URI paths = res.getURI();
 		Path path = Paths.get(paths);
-
 		try (Reader reader = Files.newBufferedReader(path);
-				CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT
+				@SuppressWarnings("static-access")
+				CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.DEFAULT.withDelimiter(delimeter)
 						.withSkipHeaderRecord()
 						.withHeader("Origin", "Departure Time", "Destination",
 								"Destination Time", "Price")
@@ -37,18 +42,9 @@ public class FlightUtility {
 				details.setDestination(csvRecord.get(2).trim());
 				details.setDestinationTime(csvRecord.get(3).trim());
 				details.setPrice(csvRecord.get(4));
-
-				System.out
-						.println("Record No - " + csvRecord.getRecordNumber());
-				System.out.println("---------------");
-				System.out.println("Origin : " + details.getOrigin());
-				System.out.println("Departure Time : "
-						+ details.getDepartureTime());
-				System.out.println("Destination : " + details.getDestination());
-				System.out.println("Destination Time: "
-						+ details.getDestinationTime());
-				System.out.println("Price : " + details.getPrice());
-				System.out.println("---------------\n\n");
+				LOGGER.info("Record No - " + csvRecord.getRecordNumber());
+				LOGGER.info("Record No - " + details.getOrigin());
+				LOGGER.info("Record No - " + details.getDestination());
 				listFlight.add(details);
 			}
 		} catch (IOException e) {
@@ -57,5 +53,5 @@ public class FlightUtility {
 		return listFlight;
 
 	}
-
+		
 }

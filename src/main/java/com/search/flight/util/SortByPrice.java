@@ -1,6 +1,8 @@
-package com.search.flight.beans;
+package com.search.flight.util;
 
 import java.util.Comparator;
+
+import com.search.flight.beans.FlightDetails;
 
 public class SortByPrice implements Comparator<FlightDetails>{
 
